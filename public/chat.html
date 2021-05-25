@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.min.css" />
+    <link rel="icon" href="./img/favicon.png" />
+    <title>Char App</title>
+  </head>
+  <body>
+    <div class="chat">
+      <!--chat sidebar -->
+      <div id="sidebar" class="chat__sidebar"></div>
+      <!--chat main -->
+      <div class="chat__main">
+        <!-- template render space -->
+        <div id="message" class="chat__messages"></div>
+
+        <!-- <button id="#increment">+1</button> -->
+        <div class="compose">
+          <form id="formMessage" action="">
+            <input
+              type="text"
+              name="message"
+              id="messageInput"
+              required
+              autocomplete="off"
+              placeholder="Enter message"
+            />
+            <button class="messageFormButton">submit</button>
+          </form>
+          <button class="send-location">Location</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- template -->
+    <!-- message -->
+    <script id="message-template" type="text/html">
+      <div class="message">
+        <p>
+          <!-- name -->
+          <span class="message__name">{{username}}</span>
+          <!-- date -->
+          <span class="message_meta">{{createdAt}}</span>
+        </p>
+        <p>{{message}}</p>
+      </div>
+    </script>
+    <!-- url -->
+    <script id="url-template" type="text/html">
+      <div class="message">
+        <p>
+          <!-- name -->
+          <span class="message__name">{{username}}</span>
+          <!-- date -->
+          <span class="message_meta">{{createdAt}}</span>
+        </p>
+        <p>
+          <a href="{{url}}" target="_blank">My current location</a>
+        </p>
+      </div>
+    </script>
+    <!-- sidebar -->
+    <script id="sidebar-template" type="text/html">
+      <h2 class="room-title">{{room}} 🏠</h2>
+      <h3 class="list-title">Users 🌍</h3>
+      <ul class="users">
+        {{#users}}
+        <li>{{username}} 🌝</li>
+        {{/users}}
+      </ul>
+    </script>
+    <!-- libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <!-- client side version of socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- our own client side js file -->
+    <script src="/js/chat.js"></script>
+  </body>
+</html>
